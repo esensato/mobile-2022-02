@@ -1,0 +1,23 @@
+<ion-grid>
+
+  <ion-row>
+  <ion-col style="text-align:center"><span >{{ contadorService.numeroAtual }}</span></ion-col>
+  </ion-row>
+
+  <ion-row>
+  <ion-col style="text-align:center">
+  <ion-button (click)="onClick()">Contar Mais Um!</ion-button>
+  </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+    <ion-item>
+    <ion-label>Valor:</ion-label>
+    <ion-input [(ngModel)]="contadorService.numeroAtual"></ion-input>
+    </ion-item>
+    </ion-col>
+ 
+    </ion-row>
+
+</ion-grid>

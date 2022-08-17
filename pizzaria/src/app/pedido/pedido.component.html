@@ -19,6 +19,25 @@
 
       <ion-item>{{pizzaSelecionada.nome}} - R$ {{pizzaSelecionada.preco}}</ion-item>
 
+      <ion-item>
+        <div style="padding-right: 20px;">{{bebidaSelecionada.nome}} - R$ {{bebidaSelecionada.preco}}</div>
+        <div><ion-input type="number" size="2" value="1" (ionChange)="recalcular($event.target.value)" value={{quantidade}}></ion-input></div>
+      </ion-item>
+      
+      <ion-item>
+        <div style="padding-right: 5px;"><ion-checkbox (ionChange)="queijoExtra($event.target.checked)"></ion-checkbox></div><div>Queijo Extra</div>
+      </ion-item>
+      
+      <ion-item>
+          <div style="padding-right: 5px;"><ion-icon name="cash-outline"></ion-icon></div> 
+          <div>Total: R$ {{total}}</div> 
+      </ion-item>
+      
+      <ion-item>
+        <ion-button (click)="salvarPedido()">Salvar Pedido</ion-button>
+    </ion-item>
+
+
     </ion-card-content>
     </ion-card>
    

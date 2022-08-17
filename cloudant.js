@@ -12,7 +12,7 @@ function main(params) {
 
     return new Promise((process, reject) => {
         
-        client.postDocument({db: 'pedidos', document: {pizza: "4 Queijos"}})
+        client.postDocument({db: 'pedidos', document: params.pedido})
         .then((ok) => process({ body: ok }))
         .catch((err) => reject({body: err}))
         

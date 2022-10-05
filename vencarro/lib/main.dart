@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:vencarro/lista_veiculo.dart';
+import 'package:vencarro/resumo.dart';
 
 void main() {
   runApp(Splash());

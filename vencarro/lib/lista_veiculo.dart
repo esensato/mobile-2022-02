@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vencarro/Veiculo.dart';
+import 'package:vencarro/resumo.dart';
 import 'package:vencarro/util.dart';
 
 class ListaVeiculos extends StatelessWidget {
@@ -7,7 +8,8 @@ class ListaVeiculos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(title: 'VenCarro',
+    return MaterialApp( routes: {'/resumo': (context) => Resumo()},
+      title: 'VenCarro',
       home: Scaffold(
         appBar: AppBar(title: Text('VenCarro')),
         body: _ListaVeiculoStateful()
@@ -67,6 +69,15 @@ class _ListaVeiculoState extends State<_ListaVeiculoStateful>{
               _listaVeiculos.clear();
               _listaVeiculos.addAll(anos);
             });
+          });
+        } else if (_veiculoSelecionado.idModelo != '' && _veiculoSelecionado.idAno != '') {
+          Util.obterPreco(_listaVeiculos.elementAt(idx).idMarca, _listaVeiculos.elementAt(idx).marca,
+              _listaVeiculos.elementAt(idx).idModelo, _listaVeiculos.elementAt(idx).modelo,
+              _listaVeiculos.elementAt(idx).idAno,
+              _listaVeiculos.elementAt(idx).ano).then((preco) {
+                _veiculoSelecionado.preco = preco.preco;
+                // navegar para a tela de resumo...
+                Navigator.of(context).pushNamed('/resumo', arguments: _veiculoSelecionado);
           });
         }
 

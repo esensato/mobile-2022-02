@@ -35,4 +35,13 @@ class Util {
     });
     return ret;
   }
+
+  static Future<Veiculo> obterPreco(String idMarca, String marca, String idModelo, String modelo, String idAno, String ano) async {
+    var urlAno = 'https://parallelum.com.br/fipe/api/v1/carros/marcas/${idMarca}/modelos/${idModelo}/anos/${idAno}';
+    var res = await http.get(Uri.parse(urlAno));
+    var json = jsonDecode(res.body);
+    var ret = Veiculo(idMarca: idMarca, marca: marca, idModelo: idModelo, modelo: modelo,
+        idAno: idAno, ano: ano, preco: json['Valor']);
+    return ret;
+  }
 }
